@@ -1,0 +1,21 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: wordpress-db
+
+    restart: unless-stopped
+
+    environment:
+      MARIADB_ROOT_PASSWORD: ChangeMeRootPassword
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: ChangeMePassword
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+    ports:
+      - "127.0.0.1:3306:3306"
+
+volumes:
+  mariadb_data:
